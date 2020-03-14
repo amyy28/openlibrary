@@ -460,6 +460,7 @@ class search(delegate.page):
         global ftoken_db
         i = web.input(author_key=[], language=[], first_publish_year=[], publisher_facet=[], subject_facet=[], person_facet=[], place_facet=[], time_facet=[], public_scan_b=[])
         if subject:
+            # Search facets for subjects appear to require capitalization
             i.subject_facet.append(subject.capitalize())
             i.setdefault('q', 'subject:"%s"' % subject)
         # Send to full-text Search Inside if checkbox checked
