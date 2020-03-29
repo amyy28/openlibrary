@@ -9,6 +9,7 @@ from paapi5_python_sdk.api.default_api import DefaultApi
 from paapi5_python_sdk.get_items_request import GetItemsRequest
 from paapi5_python_sdk.get_items_resource import GetItemsResource
 from paapi5_python_sdk.partner_type import PartnerType
+from paapi5_python_sdk.rest import ApiException
 
 from infogami.utils.view import public
 from openlibrary.core import lending, cache, helpers as h
