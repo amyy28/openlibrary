@@ -105,12 +105,15 @@ class AmazonAPI:
         item_ids = asins if type(asins) is list else [asins]
         _resources = (self.RESOURCES[resources] if resources
                       else self.RESOURCES['import'])
-        request = GetItemsRequest(partner_tag=self.tag,
-                                  partner_type=PartnerType.ASSOCIATES,
-                                  marketplace=marketplace,
-                                  item_ids=item_ids,
-                                  resources=_resources,
-                                  **kwargs)
+        try:
+            request = GetItemsRequest(partner_tag=self.tag,
+                                      partner_type=PartnerType.ASSOCIATES,
+                                      marketplace=marketplace,
+                                      item_ids=item_ids,
+                                     resources=_resources,
+                                     **kwargs)
+        except ApiException as e:
+            return None
         response = self.api.get_items(request)
         products = response.items_result.items
         return (products if not serialize else
