@@ -110,9 +110,9 @@ class AmazonAPI:
                                       partner_type=PartnerType.ASSOCIATES,
                                       marketplace=marketplace,
                                       item_ids=item_ids,
-                                     resources=_resources,
-                                     **kwargs)
-        except ApiException as e:
+                                      resources=_resources,
+                                      **kwargs)
+        except ApiException:
             return None
         response = self.api.get_items(request)
         products = response.items_result.items
